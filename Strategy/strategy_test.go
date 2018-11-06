@@ -23,3 +23,21 @@ func TestSubOperator_Operate(t *testing.T) {
 		t.Error("减法计算错误")
 	}
 }
+
+type DivisionOperator struct {
+}
+
+//整数除法，demo
+func (DivisionOperator) Operate(i, j int) int {
+	return i/j
+}
+
+func TestNewOperator(t *testing.T)  {
+	calculator:=NewCalculater(DivisionOperator{})
+
+	expectResult:=calculator.Strategy.Operate(2,1)
+
+	if expectResult!=2 {
+		t.Error("除法计算错误")
+	}
+}
